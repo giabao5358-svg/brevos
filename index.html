@@ -1,0 +1,1423 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trường Trung Cấp Việt - Nhật | Đào tạo nghề chất lượng cao</title>
+  <meta name="description" content="Trường Trung Cấp Việt - Nhật - Đào tạo đa ngành: Công nghệ thông tin, Điện công nghiệp, Văn thư, Kế toán. Liên thông đại học dễ dàng. Môi trường học tập thanh tịnh, hiện đại.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #5b8c7a;
+      --primary-light: #7ba896;
+      --primary-soft: #e8f3ef;
+      --secondary: #a8c5d4;
+      --accent: #d4a574;
+      --bg: #fafbf9;
+      --bg-soft: #f5f8f6;
+      --text: #3d4a45;
+      --text-light: #6b7c75;
+      --white: #ffffff;
+      --shadow: 0 8px 30px rgba(91, 140, 122, 0.08);
+      --shadow-hover: 0 12px 40px rgba(91, 140, 122, 0.15);
+      --radius: 16px;
+      --radius-sm: 10px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-weight: 400;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.3s ease;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 1px 20px rgba(0,0,0,0.04);
+      transition: all 0.3s ease;
+    }
+
+    header.scrolled {
+      box-shadow: 0 4px 30px rgba(91, 140, 122, 0.1);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--primary);
+    }
+
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-light);
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--primary);
+      background: var(--primary-soft);
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 22px;
+      border-radius: 50px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: inherit;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .btn-outline:hover {
+      background: var(--primary-soft);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white;
+      box-shadow: 0 4px 15px rgba(91, 140, 122, 0.25);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(91, 140, 122, 0.35);
+    }
+
+    .btn-soft {
+      background: var(--primary-soft);
+      color: var(--primary);
+    }
+
+    .btn-soft:hover {
+      background: #d8ebe3;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      margin: 5px 0;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 140px 0 80px;
+      background: linear-gradient(160deg, #f0f7f4 0%, #fafbf9 50%, #f5f9fc 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(91,140,122,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px;
+      left: -80px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(168,197,212,0.12) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--white);
+      padding: 6px 14px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      color: var(--primary);
+      font-weight: 500;
+      box-shadow: var(--shadow);
+      margin-bottom: 20px;
+    }
+
+    .hero-badge span {
+      width: 8px;
+      height: 8px;
+      background: var(--primary);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      line-height: 1.25;
+      color: var(--text);
+      margin-bottom: 18px;
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      margin-bottom: 32px;
+      max-width: 520px;
+      font-weight: 300;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .hero-visual {
+      position: relative;
+    }
+
+    .hero-card {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 32px;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .hero-card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .stat-item {
+      background: var(--bg-soft);
+      padding: 20px;
+      border-radius: var(--radius-sm);
+      text-align: center;
+    }
+
+    .stat-item strong {
+      display: block;
+      font-size: 1.8rem;
+      font-family: 'Quicksand', sans-serif;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+
+    .stat-item span {
+      font-size: 0.85rem;
+      color: var(--text-light);
+    }
+
+    .hero-float {
+      position: absolute;
+      background: var(--white);
+      padding: 12px 18px;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hero-float.top {
+      top: -20px;
+      right: 20px;
+    }
+
+    .hero-float.bottom {
+      bottom: -16px;
+      left: 30px;
+    }
+
+    .float-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+
+    .float-icon.green { background: var(--primary-soft); }
+    .float-icon.blue { background: #e8f1f6; }
+
+    /* Sections */
+    section {
+      padding: 90px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .section-header .label {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--primary);
+      background: var(--primary-soft);
+      padding: 6px 16px;
+      border-radius: 50px;
+      margin-bottom: 14px;
+      letter-spacing: 0.03em;
+    }
+
+    .section-header h2 {
+      font-size: 2.2rem;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    .section-header p {
+      color: var(--text-light);
+      max-width: 560px;
+      margin: 0 auto;
+      font-weight: 300;
+    }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .about-image {
+      background: linear-gradient(145deg, var(--primary-soft), #e0eef5);
+      border-radius: 24px;
+      height: 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-image-inner {
+      text-align: center;
+      padding: 40px;
+    }
+
+    .about-image-inner .big-icon {
+      font-size: 4rem;
+      margin-bottom: 16px;
+    }
+
+    .about-image-inner h3 {
+      font-size: 1.4rem;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .about-image-inner p {
+      color: var(--text-light);
+      font-size: 0.95rem;
+    }
+
+    .about-content h3 {
+      font-size: 1.6rem;
+      margin-bottom: 16px;
+    }
+
+    .about-content p {
+      color: var(--text-light);
+      margin-bottom: 16px;
+      font-weight: 300;
+    }
+
+    .about-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px;
+      background: var(--white);
+      border-radius: var(--radius-sm);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+    }
+
+    .feature-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--primary-soft);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.1rem;
+    }
+
+    .feature-item strong {
+      display: block;
+      font-size: 0.95rem;
+      margin-bottom: 2px;
+    }
+
+    .feature-item span {
+      font-size: 0.82rem;
+      color: var(--text-light);
+    }
+
+    /* Majors */
+    .majors {
+      background: var(--bg-soft);
+    }
+
+    .majors-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .major-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 32px 24px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: all 0.35s ease;
+      border: 1px solid transparent;
+    }
+
+    .major-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--primary-soft);
+    }
+
+    .major-icon {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 20px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+    }
+
+    .major-icon.it { background: linear-gradient(135deg, #e8f3ef, #d4ebe3); }
+    .major-icon.electric { background: linear-gradient(135deg, #fef6e8, #fce8d0); }
+    .major-icon.office { background: linear-gradient(135deg, #e8f1f6, #d4e5f0); }
+    .major-icon.account { background: linear-gradient(135deg, #f5eef8, #e8d9f0); }
+
+    .major-card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 10px;
+    }
+
+    .major-card p {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      font-weight: 300;
+      margin-bottom: 18px;
+    }
+
+    .major-card .tag {
+      display: inline-block;
+      font-size: 0.78rem;
+      padding: 4px 12px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      border-radius: 50px;
+      font-weight: 500;
+    }
+
+    /* Articulation */
+    .articulation-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .articulation-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .articulation-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+    }
+
+    .articulation-num {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary-soft);
+      margin-bottom: 12px;
+      line-height: 1;
+    }
+
+    .articulation-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .articulation-card p {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      font-weight: 300;
+    }
+
+    /* Auth Section */
+    .auth-section {
+      background: linear-gradient(160deg, #f0f7f4 0%, #f5f9fc 100%);
+    }
+
+    .auth-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .auth-box {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 40px 36px;
+      box-shadow: var(--shadow);
+    }
+
+    .auth-box h3 {
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    .auth-box .subtitle {
+      text-align: center;
+      color: var(--text-light);
+      font-size: 0.9rem;
+      margin-bottom: 28px;
+      font-weight: 300;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 500;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid #e5ebe8;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      background: var(--bg);
+      color: var(--text);
+      transition: all 0.25s ease;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--primary);
+      background: var(--white);
+      box-shadow: 0 0 0 3px rgba(91, 140, 122, 0.12);
+    }
+
+    .form-group input::placeholder {
+      color: #a0b0a8;
+    }
+
+    .btn-full {
+      width: 100%;
+      padding: 13px;
+      margin-top: 8px;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 24px 0;
+      color: var(--text-light);
+      font-size: 0.85rem;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #e5ebe8;
+    }
+
+    .social-btns {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .btn-social {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1.5px solid #e5ebe8;
+      background: var(--white);
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      font-family: inherit;
+      color: var(--text);
+    }
+
+    .btn-social:hover {
+      border-color: #d0d8d4;
+      background: var(--bg);
+    }
+
+    .btn-social img,
+    .btn-social svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .auth-switch {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+
+    .auth-switch a {
+      color: var(--primary);
+      font-weight: 500;
+    }
+
+    .auth-switch a:hover {
+      text-decoration: underline;
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+    }
+
+    .contact-info {
+      display: grid;
+      gap: 20px;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      background: var(--white);
+      padding: 22px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--primary-soft);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .contact-item h4 {
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+
+    .contact-item p {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      font-weight: 300;
+    }
+
+    .contact-map {
+      background: linear-gradient(145deg, var(--primary-soft), #e0eef5);
+      border-radius: 24px;
+      height: 100%;
+      min-height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 30px;
+    }
+
+    .contact-map p {
+      color: var(--text-light);
+      font-size: 0.95rem;
+    }
+
+    /* Footer */
+    footer {
+      background: #2d3a35;
+      color: #c5d0cb;
+      padding: 60px 0 30px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-brand .logo {
+      color: white;
+      margin-bottom: 16px;
+    }
+
+    .footer-brand p {
+      font-size: 0.9rem;
+      font-weight: 300;
+      line-height: 1.7;
+      opacity: 0.85;
+    }
+
+    .footer-col h4 {
+      color: white;
+      font-size: 1rem;
+      margin-bottom: 18px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col li {
+      margin-bottom: 10px;
+    }
+
+    .footer-col a {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    .footer-col a:hover {
+      opacity: 1;
+      color: var(--primary-light);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 24px;
+      text-align: center;
+      font-size: 0.85rem;
+      opacity: 0.7;
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: var(--text);
+      color: white;
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      opacity: 0;
+      transition: all 0.4s ease;
+      z-index: 2000;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .hero-content,
+      .about-grid,
+      .auth-wrapper,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .majors-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .articulation-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero-visual {
+        order: -1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        gap: 4px;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        width: 100%;
+        padding: 12px 16px;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-actions .btn-outline {
+        display: none;
+      }
+
+      .majors-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-features {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 70px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header id="header">
+    <div class="container nav">
+      <a href="#trang-chu" class="logo">
+        <div class="logo-icon">VN</div>
+        <span>Trung Cấp Việt - Nhật</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#trang-chu" class="active">Trang chủ</a></li>
+        <li><a href="#gioi-thieu">Giới thiệu</a></li>
+        <li><a href="#nganh-nghe">Ngành nghề</a></li>
+        <li><a href="#lien-thong">Liên thông</a></li>
+        <li><a href="#dang-ky">Đăng ký</a></li>
+        <li><a href="#lien-he">Liên hệ</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn btn-outline" onclick="scrollToAuth('login')">Đăng nhập</button>
+        <button class="btn btn-primary" onclick="scrollToAuth('register')">Đăng ký ngay</button>
+        <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="trang-chu">
+    <div class="container hero-content">
+      <div class="hero-text">
+        <div class="hero-badge">
+          <span></span>
+          Tuyển sinh năm học 2025 – 2026
+        </div>
+        <h1>Học nghề chất lượng cao,<br><span>liên thông đại học</span> dễ dàng</h1>
+        <p>Trường Trung Cấp Việt - Nhật mang đến môi trường học tập thanh tịnh, chương trình đào tạo gắn kết thực tế và cơ hội liên thông lên đại học cho mọi học viên.</p>
+        <div class="hero-btns">
+          <a href="#nganh-nghe" class="btn btn-primary">Khám phá ngành nghề</a>
+          <a href="#dang-ky" class="btn btn-soft">Đăng ký tư vấn</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="hero-card-grid">
+            <div class="stat-item">
+              <strong>15+</strong>
+              <span>Năm kinh nghiệm</span>
+            </div>
+            <div class="stat-item">
+              <strong>7.000+</strong>
+              <span>Học viên đã đào tạo</span>
+            </div>
+            <div class="stat-item">
+              <strong>6+</strong>
+              <span>Ngành nghề chính</span>
+            </div>
+            <div class="stat-item">
+              <strong>100%</strong>
+              <span>Hỗ trợ liên thông</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-float top">
+          <div class="float-icon green">🎓</div>
+          <div>
+            <strong style="font-size:0.9rem">Liên thông ĐH</strong><br>
+            <span style="font-size:0.8rem;color:var(--text-light)">Dễ dàng & linh hoạt</span>
+          </div>
+        </div>
+        <div class="hero-float bottom">
+          <div class="float-icon blue">🇯🇵</div>
+          <div>
+            <strong style="font-size:0.9rem">Mô hình Nhật Bản</strong><br>
+            <span style="font-size:0.8rem;color:var(--text-light)">Chất lượng & kỷ luật</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Giới thiệu -->
+  <section id="gioi-thieu">
+    <div class="container">
+      <div class="section-header">
+        <span class="label">Về chúng tôi</span>
+        <h2>Trường Trung Cấp Việt - Nhật</h2>
+        <p>Thành lập từ năm 2010, trường không ngừng nâng cao chất lượng đào tạo nghề, gắn kết với doanh nghiệp và mở rộng cơ hội học tập lên trình độ cao hơn.</p>
+      </div>
+      <div class="about-grid">
+        <div class="about-image">
+          <div class="about-image-inner">
+            <div class="big-icon">🏫</div>
+            <h3>Môi trường thanh tịnh</h3>
+            <p>Không gian học tập hiện đại, gần gũi thiên nhiên, giúp học viên tập trung và phát triển toàn diện.</p>
+          </div>
+        </div>
+        <div class="about-content">
+          <h3>Đào tạo nghề – Nâng tầm tương lai</h3>
+          <p>Trường Trung Cấp Việt - Nhật áp dụng chương trình đào tạo chất lượng cao, kết hợp kiến thức lý thuyết và thực hành tại doanh nghiệp. Học viên được trang bị kỹ năng nghề nghiệp vững vàng, tác phong công nghiệp và đạo đức nghề nghiệp.</p>
+          <p>Với sự hỗ trợ từ tập đoàn Dongtam Group và hợp tác giáo dục theo định hướng Nhật Bản, nhà trường tạo điều kiện tối đa để học viên tiếp cận công nghệ hiện đại và cơ hội việc làm ngay sau tốt nghiệp.</p>
+          <div class="about-features">
+            <div class="feature-item">
+              <div class="feature-icon">📚</div>
+              <div>
+                <strong>Chương trình thực tế</strong>
+                <span>Gắn liền với doanh nghiệp</span>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">🔗</div>
+              <div>
+                <strong>Liên thông đại học</strong>
+                <span>Hỗ trợ chuyển tiếp dễ dàng</span>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">👨‍🏫</div>
+              <div>
+                <strong>Giảng viên giàu kinh nghiệm</strong>
+                <span>Thực tiễn & tận tâm</span>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">💼</div>
+              <div>
+                <strong>Cơ hội việc làm</strong>
+                <span>Kết nối doanh nghiệp</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ngành nghề -->
+  <section class="majors" id="nganh-nghe">
+    <div class="container">
+      <div class="section-header">
+        <span class="label">Đào tạo</span>
+        <h2>Ngành nghề đa dạng</h2>
+        <p>Chương trình trung cấp chính quy với nhiều ngành nghề phù hợp nhu cầu thị trường lao động hiện nay.</p>
+      </div>
+      <div class="majors-grid">
+        <div class="major-card">
+          <div class="major-icon it">💻</div>
+          <h3>Công nghệ thông tin</h3>
+          <p>Đào tạo kỹ năng lập trình, quản trị hệ thống, mạng máy tính và ứng dụng công nghệ số trong doanh nghiệp.</p>
+          <span class="tag">Trung cấp</span>
+        </div>
+        <div class="major-card">
+          <div class="major-icon electric">⚡</div>
+          <h3>Điện công nghiệp</h3>
+          <p>Kiến thức về hệ thống điện, lắp đặt, vận hành và bảo trì thiết bị điện công nghiệp, dân dụng.</p>
+          <span class="tag">Trung cấp / Sơ cấp</span>
+        </div>
+        <div class="major-card">
+          <div class="major-icon office">📋</div>
+          <h3>Văn thư lưu trữ</h3>
+          <p>Nghiệp vụ hành chính, văn thư, lưu trữ tài liệu, kỹ năng văn phòng và quản lý hồ sơ chuyên nghiệp.</p>
+          <span class="tag">Trung cấp</span>
+        </div>
+        <div class="major-card">
+          <div class="major-icon account">📊</div>
+          <h3>Kế toán doanh nghiệp</h3>
+          <p>Kế toán tài chính, thuế, phần mềm kế toán và kỹ năng phân tích số liệu phục vụ doanh nghiệp.</p>
+          <span class="tag">Trung cấp</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Liên thông -->
+  <section id="lien-thong">
+    <div class="container">
+      <div class="section-header">
+        <span class="label">Cơ hội học tập</span>
+        <h2>Liên thông lên Đại học</h2>
+        <p>Học viên tốt nghiệp trung cấp có thể liên thông lên cao đẳng, đại học cùng ngành hoặc trái ngành theo quy định.</p>
+      </div>
+      <div class="articulation-grid">
+        <div class="articulation-card">
+          <div class="articulation-num">01</div>
+          <h3>Liên thông cùng ngành</h3>
+          <p>Chuyển tiếp lên đại học đúng chuyên ngành đã học trung cấp, rút ngắn thời gian đào tạo và công nhận tín chỉ đã tích lũy.</p>
+        </div>
+        <div class="articulation-card">
+          <div class="articulation-num">02</div>
+          <h3>Liên thông trái ngành</h3>
+          <p>Được hỗ trợ học bổ sung kiến thức để chuyển sang ngành mới, mở rộng cơ hội nghề nghiệp theo định hướng cá nhân.</p>
+        </div>
+        <div class="articulation-card">
+          <div class="articulation-num">03</div>
+          <h3>Hình thức linh hoạt</h3>
+          <p>Học tập trung, vừa học vừa làm hoặc từ xa. Nhà trường tư vấn lộ trình và kết nối với các trường đại học uy tín.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Đăng ký / Đăng nhập -->
+  <section class="auth-section" id="dang-ky">
+    <div class="container">
+      <div class="section-header">
+        <span class="label">Tài khoản</span>
+        <h2>Đăng ký & Đăng nhập</h2>
+        <p>Tạo tài khoản để theo dõi hồ sơ tuyển sinh, nhận thông tin tư vấn và cập nhật lịch học.</p>
+      </div>
+      <div class="auth-wrapper">
+        <!-- Login -->
+        <div class="auth-box" id="loginBox">
+          <h3>Đăng nhập</h3>
+          <p class="subtitle">Chào mừng bạn quay trở lại</p>
+          <form id="loginForm" onsubmit="return handleAuth(event, 'login')">
+            <div class="form-group">
+              <label for="loginEmail">Email</label>
+              <input type="email" id="loginEmail" placeholder="email@example.com" required>
+            </div>
+            <div class="form-group">
+              <label for="loginPassword">Mật khẩu</label>
+              <input type="password" id="loginPassword" placeholder="Nhập mật khẩu" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full">Đăng nhập</button>
+          </form>
+          <div class="divider">hoặc tiếp tục với</div>
+          <div class="social-btns">
+            <button type="button" class="btn-social" onclick="handleSocial('Google')">
+              <svg viewBox="0 0 24 24" width="20" height="20"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+              Đăng nhập với Google
+            </button>
+            <button type="button" class="btn-social" onclick="handleSocial('Facebook')">
+              <svg viewBox="0 0 24 24" width="20" height="20"><path fill="#1877F2" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              Đăng nhập với Facebook
+            </button>
+          </div>
+          <p class="auth-switch">Chưa có tài khoản? <a href="#registerBox" onclick="switchAuth('register')">Đăng ký ngay</a></p>
+        </div>
+
+        <!-- Register -->
+        <div class="auth-box" id="registerBox">
+          <h3>Đăng ký tài khoản</h3>
+          <p class="subtitle">Tạo tài khoản mới chỉ trong vài bước</p>
+          <form id="registerForm" onsubmit="return handleAuth(event, 'register')">
+            <div class="form-group">
+              <label for="regName">Họ và tên</label>
+              <input type="text" id="regName" placeholder="Nguyễn Văn A" required>
+            </div>
+            <div class="form-group">
+              <label for="regEmail">Email</label>
+              <input type="email" id="regEmail" placeholder="email@example.com" required>
+            </div>
+            <div class="form-group">
+              <label for="regPhone">Số điện thoại</label>
+              <input type="tel" id="regPhone" placeholder="09xx xxx xxx" required>
+            </div>
+            <div class="form-group">
+              <label for="regPassword">Mật khẩu</label>
+              <input type="password" id="regPassword" placeholder="Tối thiểu 6 ký tự" required minlength="6">
+            </div>
+            <button type="submit" class="btn btn-primary btn-full">Đăng ký</button>
+          </form>
+          <div class="divider">hoặc đăng ký với</div>
+          <div class="social-btns">
+            <button type="button" class="btn-social" onclick="handleSocial('Google')">
+              <svg viewBox="0 0 24 24" width="20" height="20"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+              Đăng ký với Google
+            </button>
+            <button type="button" class="btn-social" onclick="handleSocial('Facebook')">
+              <svg viewBox="0 0 24 24" width="20" height="20"><path fill="#1877F2" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              Đăng ký với Facebook
+            </button>
+          </div>
+          <p class="auth-switch">Đã có tài khoản? <a href="#loginBox" onclick="switchAuth('login')">Đăng nhập</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Liên hệ -->
+  <section id="lien-he">
+    <div class="container">
+      <div class="section-header">
+        <span class="label">Kết nối</span>
+        <h2>Liên hệ với chúng tôi</h2>
+        <p>Đội ngũ tư vấn sẵn sàng hỗ trợ bạn mọi lúc, mọi nơi.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <h4>Địa chỉ</h4>
+              <p>Số 7, ấp Bến Lức 6, xã Bến Lức, tỉnh Tây Ninh</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <h4>Điện thoại / Zalo</h4>
+              <p>0932 448 348 — (0272) 3 524 579</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div>
+              <h4>Email</h4>
+              <p>info@truongvietnhat.edu.vn</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🌐</div>
+            <div>
+              <h4>Website chính thức</h4>
+              <p>https://truongvietnhat.edu.vn</p>
+            </div>
+          </div>
+        </div>
+        <div class="contact-map">
+          <div>
+            <div style="font-size: 3rem; margin-bottom: 12px;">🗺️</div>
+            <p><strong>Trường Trung Cấp Việt - Nhật</strong><br>Xã Bến Lức, tỉnh Tây Ninh<br><br>Tuyển sinh liên tục quanh năm</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#trang-chu" class="logo">
+            <div class="logo-icon">VN</div>
+            <span>Trung Cấp Việt - Nhật</span>
+          </a>
+          <p>Đào tạo nghề chất lượng cao, gắn kết doanh nghiệp và mở rộng cơ hội liên thông đại học cho thế hệ trẻ Việt Nam.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Khám phá</h4>
+          <ul>
+            <li><a href="#gioi-thieu">Giới thiệu</a></li>
+            <li><a href="#nganh-nghe">Ngành nghề</a></li>
+            <li><a href="#lien-thong">Liên thông</a></li>
+            <li><a href="#dang-ky">Đăng ký</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Ngành học</h4>
+          <ul>
+            <li><a href="#nganh-nghe">Công nghệ thông tin</a></li>
+            <li><a href="#nganh-nghe">Điện công nghiệp</a></li>
+            <li><a href="#nganh-nghe">Văn thư lưu trữ</a></li>
+            <li><a href="#nganh-nghe">Kế toán doanh nghiệp</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Hỗ trợ</h4>
+          <ul>
+            <li><a href="#lien-he">Liên hệ tư vấn</a></li>
+            <li><a href="#dang-ky">Đăng ký online</a></li>
+            <li><a href="https://truongvietnhat.edu.vn" target="_blank" rel="noopener">Website chính thức</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2025 Trường Trung Cấp Việt - Nhật. Giao diện demo được tạo cho mục đích giới thiệu.
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    // Header scroll effect
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Mobile menu
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    // Close menu on link click
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+
+    // Active nav link on scroll
+    const sections = document.querySelectorAll('section[id]');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const top = section.offsetTop - 100;
+        if (scrollY >= top) current = section.getAttribute('id');
+      });
+      navLinks.querySelectorAll('a').forEach(a => {
+        a.classList.remove('active');
+        if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+      });
+    });
+
+    // Scroll to auth
+    function scrollToAuth(type) {
+      document.getElementById('dang-ky').scrollIntoView({ behavior: 'smooth' });
+      if (type === 'login') {
+        document.getElementById('loginBox').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        document.getElementById('registerBox').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+
+    function switchAuth(type) {
+      if (type === 'login') {
+        document.getElementById('loginBox').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        document.getElementById('registerBox').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+
+    // Toast
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3200);
+    }
+
+    // Handle form submit (mock)
+    function handleAuth(e, type) {
+      e.preventDefault();
+      if (type === 'login') {
+        showToast('Đăng nhập thành công! (Demo – chưa kết nối backend)');
+      } else {
+        showToast('Đăng ký thành công! Vui lòng kiểm tra email. (Demo)');
+      }
+      e.target.reset();
+      return false;
+    }
+
+    // Social login mock
+    function handleSocial(provider) {
+      showToast('Đang chuyển hướng đến ' + provider + '... (Demo – cần cấu hình OAuth thực tế)');
+    }
+  </script>
+</body>
+</html>
