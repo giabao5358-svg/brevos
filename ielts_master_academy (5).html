@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IELTS Master Academy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        .animate-marquee {
+            display: inline-block;
+            animation: marquee 25s linear infinite;
+        }
+        .animate-marquee:hover {
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col">
+
+    <div class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white py-2 px-4 overflow-hidden whitespace-nowrap text-sm font-medium shadow-sm">
+        <div class="animate-marquee">
+            🌟 Welcome to IELTS Master Academy - Leading IELTS Experts & Proven Pathway to 7.0+ Success 🚀 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 📚 Enrollments now open for Summer Intensive &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 📞 Hotline: 089795358
+        </div>
+    </div>
+
+    <div class="flex flex-1 relative overflow-hidden">
+        
+        <aside id="sidebar" class="w-64 bg-white border-r border-slate-200 flex flex-col z-30 transition-all duration-300 shadow-sm">
+            <div class="p-6 border-b border-slate-100 flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-pink-500 flex items-center justify-center text-white font-bold text-xl shadow-md">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-slate-900 leading-tight">IELTS Master</h1>
+                    <span class="text-xs text-purple-600 font-semibold tracking-wide">ACADEMY</span>
+                </div>
+            </div>
+
+            <nav class="flex-1 p-4 space-y-1 overflow-y-auto">
+                <button onclick="switchTab('courses')" id="nav-courses" class="nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-slate-600 hover:bg-indigo-50 hover:text-indigo-600 font-medium transition-all">
+                    <i class="fa-solid fa-book-open w-5 text-center"></i>
+                    <span>Courses</span>
+                </button>
+                <button onclick="switchTab('instructors')" id="nav-instructors" class="nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-slate-600 hover:bg-indigo-50 hover:text-indigo-600 font-medium transition-all">
+                    <i class="fa-solid fa-chalkboard-user w-5 text-center"></i>
+                    <span>Instructors</span>
+                </button>
+                <button onclick="switchTab('ai-tutor')" id="nav-ai-tutor" class="nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-slate-600 hover:bg-indigo-50 hover:text-indigo-600 font-medium transition-all">
+                    <i class="fa-solid fa-robot w-5 text-center"></i>
+                    <span>AI Tutor & Support</span>
+                    <span class="ml-auto bg-gradient-to-r from-pink-500 to-purple-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">GEMINI</span>
+                </button>
+                <button onclick="switchTab('apply')" id="nav-apply" class="nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-slate-600 hover:bg-indigo-50 hover:text-indigo-600 font-medium transition-all">
+                    <i class="fa-solid fa-file-signature w-5 text-center"></i>
+                    <span>Application Form</span>
+                </button>
+                <button onclick="switchTab('contact')" id="nav-contact" class="nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-slate-600 hover:bg-indigo-50 hover:text-indigo-600 font-medium transition-all">
+                    <i class="fa-solid fa-headset w-5 text-center"></i>
+                    <span>Contact Us</span>
+                </button>
+            </nav>
+
+            <div class="p-4 border-t border-slate-100">
+                <div id="user-profile-widget" class="bg-slate-50 p-3 rounded-xl border border-slate-200 flex items-center justify-between">
+                    <div class="flex items-center space-x-3 overflow-hidden">
+                        <div id="user-avatar" class="w-9 h-9 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-sm shrink-0">G</div>
+                        <div class="truncate">
+                            <p id="user-name-display" class="text-sm font-semibold text-slate-800 truncate">Guest User</p>
+                            <p id="user-status-display" class="text-xs text-slate-500 truncate">Not logged in</p>
+                        </div>
+                    </div>
+                    <button onclick="openAuthModal()" id="auth-action-btn" class="text-xs bg-indigo-600 text-white px-3 py-1.5 rounded-lg font-medium hover:bg-indigo-700 transition shrink-0">Login</button>
+                </div>
+            </div>
+        </aside>
+
+        <main class="flex-1 flex flex-col min-w-0 overflow-y-auto bg-slate-50">
+            <header class="bg-white border-b border-slate-200 px-8 py-4 flex items-center justify-between shadow-xs sticky top-0 z-20">
+                <div class="flex items-center space-x-4">
+                    <h2 id="page-title" class="text-2xl font-bold text-slate-900">Courses & Programs</h2>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="relative hidden sm:block">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-slate-400"></i>
+                        <input type="text" placeholder="Search courses, tips..." class="pl-10 pr-4 py-2 bg-slate-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 w-64 border border-transparent">
+                    </div>
+                    <button onclick="toggleChatbot()" class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 py-2 rounded-xl text-sm font-semibold shadow-md hover:opacity-95 transition flex items-center space-x-2">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        <span>Ask AI Assistant</span>
+                    </button>
+                </div>
+            </header>
+
+            <div class="p-8 max-w-7xl w-full mx-auto flex-1">
+                
+                <section id="tab-courses" class="tab-content space-y-6">
+                    <div class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 rounded-3xl p-8 text-white shadow-xl relative overflow-hidden">
+                        <div class="relative z-10 max-w-2xl">
+                            <span class="bg-white/20 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Masterclass 2026</span>
+                            <h3 class="text-3xl font-extrabold mt-3">Achieve IELTS 7.0+ with Expert Guidance</h3>
+                            <p class="mt-2 text-indigo-100 text-sm leading-relaxed">Comprehensive curriculum covering Listening, Reading, Writing & Speaking with AI-powered feedback and personalized examiner mentoring.</p>
+                            <div class="mt-6 flex space-x-4">
+                                <button onclick="switchTab('apply')" class="bg-white text-indigo-700 font-bold px-6 py-3 rounded-xl shadow-lg hover:bg-slate-100 transition">Enroll Now</button>
+                                <button onclick="switchTab('ai-tutor')" class="bg-indigo-500/30 border border-white/30 font-bold px-6 py-3 rounded-xl backdrop-blur-md hover:bg-indigo-500/40 transition">Try AI Tutor</button>
+                            </div>
+                        </div>
+                        <div class="absolute right-[-20px] bottom-[-40px] opacity-15 text-[220px] font-black pointer-events-none">
+                            <i class="fa-solid fa-award"></i>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-xs flex flex-col justify-between hover:shadow-md transition">
+                            <div>
+                                <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-lg">Foundation</span>
+                                <h4 class="text-xl font-bold text-slate-900 mt-3">IELTS Starter (5.0 - 5.5)</h4>
+                                <p class="text-slate-600 text-sm mt-2">Build robust grammar, expand vocabulary, and master foundational listening & reading skills.</p>
+                            </div>
+                            <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                                <span class="text-lg font-extrabold text-slate-900">$299</span>
+                                <button onclick="switchTab('apply')" class="bg-indigo-600 text-white text-xs font-semibold px-4 py-2 rounded-lg hover:bg-indigo-700 transition">Register</button>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-2xl p-6 border-2 border-indigo-500 shadow-md flex flex-col justify-between relative">
+                            <div class="absolute -top-3 right-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-xs">Most Popular</div>
+                            <div>
+                                <span class="text-xs font-bold text-purple-600 bg-purple-50 px-2.5 py-1 rounded-lg">Advanced</span>
+                                <h4 class="text-xl font-bold text-slate-900 mt-3">IELTS Master 7.0+</h4>
+                                <p class="text-slate-600 text-sm mt-2">Deep dive into Task 2 essays, complex speaking structures, and timed mock tests with Gemini AI scoring.</p>
+                            </div>
+                            <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                                <span class="text-lg font-extrabold text-slate-900">$499</span>
+                                <button onclick="switchTab('apply')" class="bg-indigo-600 text-white text-xs font-semibold px-4 py-2 rounded-lg hover:bg-indigo-700 transition">Register</button>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-xs flex flex-col justify-between hover:shadow-md transition">
+                            <div>
+                                <span class="text-xs font-bold text-pink-600 bg-pink-50 px-2.5 py-1 rounded-lg">Intensive</span>
+                                <h4 class="text-xl font-bold text-slate-900 mt-3">1-on-1 Speaking Bootcamp</h4>
+                                <p class="text-slate-600 text-sm mt-2">Daily live speaking simulations, pronunciation tuning, and personalized examiner feedback.</p>
+                            </div>
+                            <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                                <span class="text-lg font-extrabold text-slate-900">$699</span>
+                                <button onclick="switchTab('apply')" class="bg-indigo-600 text-white text-xs font-semibold px-4 py-2 rounded-lg hover:bg-indigo-700 transition">Register</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="tab-instructors" class="tab-content hidden space-y-6">
+                    <div>
+                        <h3 class="text-2xl font-bold text-slate-900">World-Class IELTS Instructors</h3>
+                        <p class="text-slate-600 text-sm mt-1">Learn directly from certified examiners and 8.5+ scorers.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-white rounded-2xl p-6 border border-slate-200 text-center shadow-xs">
+                            <img src="https://placehold.co/120x120/6366f1/ffffff?text=GB" alt="Instructor" class="w-24 h-24 rounded-full mx-auto object-cover border-4 border-indigo-100 shadow-md">
+                            <h4 class="font-bold text-lg text-slate-900 mt-4">Gia Bảo, M.A.</h4>
+                            <p class="text-xs text-purple-600 font-semibold">Founder & Head IELTS Trainer (8.5 Overall)</p>
+                            <p class="text-slate-600 text-sm mt-3">Over 8 years of experience helping 1,500+ students achieve Band 7.0+ success.</p>
+                        </div>
+                        <div class="bg-white rounded-2xl p-6 border border-slate-200 text-center shadow-xs">
+                            <img src="https://placehold.co/120x120/ec4899/ffffff?text=JD" alt="Instructor" class="w-24 h-24 rounded-full mx-auto object-cover border-4 border-pink-100 shadow-md">
+                            <h4 class="font-bold text-lg text-slate-900 mt-4">Jessica Davis</h4>
+                            <p class="text-xs text-pink-600 font-semibold">Former IELTS Examiner (Native Speaker)</p>
+                            <p class="text-slate-600 text-sm mt-3">Expert in Speaking Part 2 & 3 strategies and sophisticated lexical resource building.</p>
+                        </div>
+                        <div class="bg-white rounded-2xl p-6 border border-slate-200 text-center shadow-xs">
+                            <img src="https://placehold.co/120x120/8b5cf6/ffffff?text=AL" alt="Instructor" class="w-24 h-24 rounded-full mx-auto object-cover border-4 border-purple-100 shadow-md">
+                            <h4 class="font-bold text-lg text-slate-900 mt-4">Alex Lee</h4>
+                            <p class="text-xs text-indigo-600 font-semibold">Writing Specialist (Band 9.0 Essayist)</p>
+                            <p class="text-slate-600 text-sm mt-3">Specializes in coherent paragraph structuring and advanced grammatical grammar range.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="tab-ai-tutor" class="tab-content hidden space-y-6">
+                    <div class="bg-white rounded-3xl border border-slate-200 shadow-sm flex flex-col h-[650px] overflow-hidden">
+                        <div class="bg-gradient-to-r from-indigo-600 to-purple-600 p-4 text-white flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-lg shadow-inner">
+                                    <i class="fa-solid fa-robot"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold">Gemini IELTS Expert & Student Support</h3>
+                                    <p class="text-xs text-indigo-100">Dynamic AI Tutor ready to answer any question instantly</p>
+                                </div>
+                            </div>
+                            <span class="bg-emerald-500 text-white text-[11px] font-semibold px-3 py-1 rounded-full flex items-center space-x-1.5">
+                                <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+                                <span>Online</span>
+                            </span>
+                        </div>
+
+                        <div id="ai-chat-messages" class="flex-1 p-6 overflow-y-auto space-y-4 bg-slate-50/50">
+                            <div class="flex items-start space-x-3">
+                                <div class="w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center text-xs font-bold shrink-0 shadow-sm">AI</div>
+                                <div class="bg-white border border-slate-200 rounded-2xl p-4 max-w-xl text-sm shadow-xs text-slate-800">
+                                    Hello! I am your AI IELTS Tutor and Student Support assistant, powered by Gemini. Ask me anything—whether you want me to grade your essay paragraph, explain grammar rules, suggest Band 8+ vocabulary, or answer questions about our academy!
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-4 bg-white border-t border-slate-200">
+                            <form onsubmit="handleAiChatSubmit(event)" class="flex items-center space-x-3">
+                                <input type="text" id="ai-chat-input" placeholder="Ask about IELTS essays, grammar, courses, or any question..." class="flex-1 bg-slate-100 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                <button type="submit" class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-3 rounded-xl font-semibold text-sm shadow-md hover:opacity-95 transition flex items-center space-x-2 shrink-0">
+                                    <span>Send</span>
+                                    <i class="fa-solid fa-paper-plane"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="tab-apply" class="tab-content hidden space-y-6">
+                    <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-8 max-w-2xl mx-auto">
+                        <div class="text-center mb-6">
+                            <h3 class="text-2xl font-bold text-slate-900">Course Application Form</h3>
+                            <p class="text-slate-600 text-sm mt-1">Register for your desired IELTS program and our advisors will contact you.</p>
+                        </div>
+
+                        <form onsubmit="handleApplicationSubmit(event)" class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Full Name</label>
+                                <input type="text" id="apply-name" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="e.g. Nguyen Van A">
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Email Address</label>
+                                    <input type="email" id="apply-email" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="student@example.com">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Phone Number</label>
+                                    <input type="tel" id="apply-phone" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="089795358">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Selected Course</label>
+                                <select id="apply-course" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                    <option>IELTS Starter (5.0 - 5.5)</option>
+                                    <option selected>IELTS Master 7.0+</option>
+                                    <option>1-on-1 Speaking Bootcamp</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Current English Level / Target Band</label>
+                                <textarea id="apply-notes" rows="3" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Tell us about your previous IELTS score or goals..."></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold py-3.5 rounded-xl shadow-md hover:opacity-95 transition">Submit Application</button>
+                        </form>
+                    </div>
+                </section>
+
+                <section id="tab-contact" class="tab-content hidden space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                        <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-8 flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-2xl font-bold text-slate-900">Get in Touch</h3>
+                                <p class="text-slate-600 text-sm mt-1">We are here to assist you with any questions about our curriculum or enrollment.</p>
+                                
+                                <div class="mt-8 space-y-6">
+                                    <div class="flex items-start space-x-4">
+                                        <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center shrink-0">
+                                            <i class="fa-solid fa-envelope"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-xs font-bold text-slate-400 uppercase">Email Us</p>
+                                            <p class="text-slate-800 font-semibold mt-0.5">giabao15052020@gmail.com</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start space-x-4">
+                                        <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center shrink-0">
+                                            <i class="fa-solid fa-phone"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-xs font-bold text-slate-400 uppercase">Hotline / Phone</p>
+                                            <p class="text-slate-800 font-semibold mt-0.5">089795358</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start space-x-4">
+                                        <div class="w-10 h-10 rounded-xl bg-pink-50 text-pink-600 flex items-center justify-center shrink-0">
+                                            <i class="fa-solid fa-location-dot"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-xs font-bold text-slate-400 uppercase">Academy Address</p>
+                                            <p class="text-slate-800 font-semibold mt-0.5">Ấp 4, xã Mỹ Yên, Tây Ninh</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-8 pt-6 border-t border-slate-100 flex space-x-4">
+                                <a href="mailto:giabao15052020@gmail.com" class="flex-1 bg-indigo-50 text-indigo-600 text-center py-2.5 rounded-xl font-semibold text-sm hover:bg-indigo-100 transition">Send Email</a>
+                                <a href="tel:089795358" class="flex-1 bg-purple-50 text-purple-600 text-center py-2.5 rounded-xl font-semibold text-sm hover:bg-purple-100 transition">Call Now</a>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-8">
+                            <h3 class="text-xl font-bold text-slate-900 mb-4">Send a Quick Inquiry</h3>
+                            <form onsubmit="handleContactSubmit(event)" class="space-y-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Your Name</label>
+                                    <input type="text" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Full name">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Email</label>
+                                    <input type="email" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Email address">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Message</label>
+                                    <textarea rows="4" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="How can we help you?"></textarea>
+                                </div>
+                                <button type="submit" class="w-full bg-slate-900 text-white font-bold py-3 rounded-xl hover:bg-slate-800 transition text-sm">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <div id="floating-chat-container" class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+        <div id="floating-chat-box" class="hidden w-96 h-[500px] bg-white rounded-3xl shadow-2xl border border-slate-200 flex flex-col overflow-hidden mb-4 transition-all animate-in fade-in zoom-in-95 duration-200">
+            <div class="bg-gradient-to-r from-indigo-600 to-purple-600 p-4 text-white flex items-center justify-between">
+                <div class="flex items-center space-x-2.5">
+                    <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-sm">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-sm">Gemini AI Assistant</h4>
+                        <p class="text-[10px] text-indigo-100">Ask any question instantly</p>
+                    </div>
+                </div>
+                <button onclick="toggleChatbot()" class="text-white hover:opacity-80 p-1">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+            
+            <div id="floating-chat-messages" class="flex-1 p-4 overflow-y-auto space-y-3 bg-slate-50/50 text-sm">
+                <div class="flex items-start space-x-2">
+                    <div class="w-7 h-7 rounded-full bg-indigo-600 text-white flex items-center justify-center text-[10px] font-bold shrink-0">AI</div>
+                    <div class="bg-white border border-slate-200 rounded-2xl p-3 shadow-xs text-slate-800 text-xs">
+                        Hi there! Need help with IELTS writing, speaking topics, or academy info? Ask me anything!
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-3 bg-white border-t border-slate-200">
+                <form onsubmit="handleFloatingChatSubmit(event)" class="flex items-center space-x-2">
+                    <input type="text" id="floating-chat-input" placeholder="Type any question..." class="flex-1 bg-slate-100 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded-xl text-xs font-semibold hover:bg-indigo-700 transition">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <button onclick="toggleChatbot()" class="w-14 h-14 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-full shadow-xl flex items-center justify-center text-xl hover:scale-105 transition">
+            <i class="fa-solid fa-comments"></i>
+        </button>
+    </div>
+
+    <div id="auth-modal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full p-8 relative animate-in fade-in zoom-in-95 duration-200">
+            <button onclick="closeAuthModal()" class="absolute top-6 right-6 text-slate-400 hover:text-slate-600">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl mx-auto mb-3 shadow-xs">
+                    <i class="fa-solid fa-user-lock"></i>
+                </div>
+                <h3 id="auth-modal-title" class="text-2xl font-bold text-slate-900">Welcome Back</h3>
+                <p id="auth-modal-subtitle" class="text-slate-500 text-sm mt-1">Sign in to track your IELTS learning progress</p>
+            </div>
+
+            <form onsubmit="handleAuthSubmit(event)" class="space-y-4">
+                <div id="auth-name-field" class="hidden">
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Full Name</label>
+                    <input type="text" id="auth-input-name" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Your name">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Email Address</label>
+                    <input type="email" id="auth-input-email" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="student@example.com">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Password</label>
+                    <input type="password" id="auth-input-pass" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="••••••••">
+                </div>
+                <button type="submit" id="auth-submit-btn" class="w-full bg-indigo-600 text-white font-bold py-3.5 rounded-xl shadow-md hover:bg-indigo-700 transition">Sign In</button>
+            </form>
+
+            <div class="mt-6">
+                <div class="relative flex py-2 items-center">
+                    <div class="flex-grow border-t border-slate-200"></div>
+                    <span class="flex-shrink mx-4 text-xs text-slate-400 uppercase font-semibold">Or social login</span>
+                    <div class="flex-grow border-t border-slate-200"></div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 mt-4">
+                    <button onclick="simulateSocialLogin('Google')" class="flex items-center justify-center space-x-2 py-2.5 px-4 border border-slate-200 rounded-xl text-xs font-semibold text-slate-700 hover:bg-slate-50 transition">
+                        <i class="fa-brands fa-google text-red-500"></i>
+                        <span>Google</span>
+                    </button>
+                    <button onclick="simulateSocialLogin('Facebook')" class="flex items-center justify-center space-x-2 py-2.5 px-4 border border-slate-200 rounded-xl text-xs font-semibold text-slate-700 hover:bg-slate-50 transition">
+                        <i class="fa-brands fa-facebook text-blue-600"></i>
+                        <span>Facebook</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="mt-6 text-center">
+                <p id="auth-switch-text" class="text-xs text-slate-600">
+                    Don't have an account? <button onclick="toggleAuthMode()" class="text-indigo-600 font-bold hover:underline">Register now</button>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div id="custom-alert" class="fixed inset-0 bg-slate-900/40 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl shadow-2xl max-w-sm w-full p-6 text-center animate-in fade-in zoom-in-95 duration-200">
+            <div id="alert-icon" class="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl mx-auto mb-3">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h4 id="alert-title" class="text-lg font-bold text-slate-900">Success</h4>
+            <p id="alert-message" class="text-slate-600 text-sm mt-1">Action completed successfully.</p>
+            <button onclick="closeCustomAlert()" class="mt-6 w-full bg-indigo-600 text-white font-bold py-2.5 rounded-xl text-sm hover:bg-indigo-700 transition">OK</button>
+        </div>
+    </div>
+
+    <script>
+        let currentTab = 'courses';
+        let isRegisterMode = false;
+        let currentUser = JSON.parse(localStorage.getItem('ielts_user')) || null;
+
+        const titles = {
+            'courses': 'Courses & Programs',
+            'instructors': 'Expert Instructors',
+            'ai-tutor': 'AI Tutor & Student Support',
+            'apply': 'Course Application Form',
+            'contact': 'Contact & Location'
+        };
+
+        window.onload = function() {
+            updateUserUI();
+            switchTab('courses');
+        };
+
+        function showAlert(title, message, isSuccess = true) {
+            document.getElementById('alert-title').innerText = title;
+            document.getElementById('alert-message').innerText = message;
+            const iconDiv = document.getElementById('alert-icon');
+            if (isSuccess) {
+                iconDiv.className = 'w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl mx-auto mb-3';
+                iconDiv.innerHTML = '<i class="fa-solid fa-check"></i>';
+            } else {
+                iconDiv.className = 'w-12 h-12 rounded-2xl bg-pink-50 text-pink-600 flex items-center justify-center text-xl mx-auto mb-3';
+                iconDiv.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i>';
+            }
+            document.getElementById('custom-alert').classList.remove('hidden');
+        }
+
+        function closeCustomAlert() {
+            document.getElementById('custom-alert').classList.add('hidden');
+        }
+
+        function switchTab(tabId) {
+            currentTab = tabId;
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(`tab-${tabId}`).classList.remove('hidden');
+
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.className = 'nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-slate-600 hover:bg-indigo-50 hover:text-indigo-600 font-medium transition-all';
+            });
+            const activeBtn = document.getElementById(`nav-${tabId}`);
+            if (activeBtn) {
+                activeBtn.className = 'nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl bg-indigo-600 text-white font-medium shadow-md shadow-indigo-200';
+            }
+
+            document.getElementById('page-title').innerText = titles[tabId] || 'Dashboard';
+        }
+
+        function toggleChatbot() {
+            const box = document.getElementById('floating-chat-box');
+            box.classList.toggle('hidden');
+        }
+
+        function updateUserUI() {
+            const nameDisp = document.getElementById('user-name-display');
+            const statusDisp = document.getElementById('user-status-display');
+            const avatar = document.getElementById('user-avatar');
+            const btn = document.getElementById('auth-action-btn');
+
+            if (currentUser) {
+                nameDisp.innerText = currentUser.name;
+                statusDisp.innerText = currentUser.email;
+                avatar.innerText = currentUser.name.charAt(0).toUpperCase();
+                btn.innerText = 'Logout';
+                btn.onclick = logoutUser;
+            } else {
+                nameDisp.innerText = 'Guest User';
+                statusDisp.innerText = 'Not logged in';
+                avatar.innerText = 'G';
+                btn.innerText = 'Login';
+                btn.onclick = openAuthModal;
+            }
+        }
+
+        function openAuthModal() {
+            document.getElementById('auth-modal').classList.remove('hidden');
+        }
+
+        function closeAuthModal() {
+            document.getElementById('auth-modal').classList.add('hidden');
+        }
+
+        function toggleAuthMode() {
+            isRegisterMode = !isRegisterMode;
+            const title = document.getElementById('auth-modal-title');
+            const subtitle = document.getElementById('auth-modal-subtitle');
+            const nameField = document.getElementById('auth-name-field');
+            const submitBtn = document.getElementById('auth-submit-btn');
+            const switchText = document.getElementById('auth-switch-text');
+
+            if (isRegisterMode) {
+                title.innerText = 'Create Account';
+                subtitle.innerText = 'Join IELTS Master Academy today';
+                nameField.classList.remove('hidden');
+                submitBtn.innerText = 'Register';
+                switchText.innerHTML = 'Already have an account? <button onclick="toggleAuthMode()" class="text-indigo-600 font-bold hover:underline">Sign in</button>';
+            } else {
+                title.innerText = 'Welcome Back';
+                subtitle.innerText = 'Sign in to track your IELTS learning progress';
+                nameField.classList.add('hidden');
+                submitBtn.innerText = 'Sign In';
+                switchText.innerHTML = "Don't have an account? <button onclick=\"toggleAuthMode()\" class=\"text-indigo-600 font-bold hover:underline\">Register now</button>";
+            }
+        }
+
+        function handleAuthSubmit(event) {
+            event.preventDefault();
+            const email = document.getElementById('auth-input-email').value;
+            const pass = document.getElementById('auth-input-pass').value;
+            const name = isRegisterMode ? document.getElementById('auth-input-name').value : email.split('@')[0];
+
+            currentUser = { name, email };
+            localStorage.setItem('ielts_user', JSON.stringify(currentUser));
+            updateUserUI();
+            closeAuthModal();
+            showAlert('Welcome', isRegisterMode ? 'Account successfully created!' : 'Successfully signed in!');
+        }
+
+        function simulateSocialLogin(provider) {
+            currentUser = { name: `${provider} Student`, email: `user@${provider.toLowerCase()}.com` };
+            localStorage.setItem('ielts_user', JSON.stringify(currentUser));
+            updateUserUI();
+            closeAuthModal();
+            showAlert('Success', `Logged in successfully via ${provider}!`);
+        }
+
+        function logoutUser() {
+            currentUser = null;
+            localStorage.removeItem('ielts_user');
+            updateUserUI();
+            showAlert('Logged Out', 'You have been successfully logged out.');
+        }
+
+        function handleApplicationSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('apply-name').value;
+            const course = document.getElementById('apply-course').value;
+            showAlert('Application Submitted!', `Thank you ${name}! Your application for ${course} has been received. Our team will contact you soon.`);
+            event.target.reset();
+        }
+
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            showAlert('Message Sent', 'Thank you for contacting us! We will reply via email shortly.');
+            event.target.reset();
+        }
+
+        // --- GEMINI API INTEGRATION FOR UNRESTRICTED INTELLIGENT RESPONSES ---
+        async function callGeminiAPI(promptText) {
+            const systemPrompt = "You are an expert IELTS Master Academy Tutor and Student Support AI. You can answer ANY question dynamically and intelligently—whether it is about IELTS speaking/writing strategies, vocabulary, grammar rules, essay evaluations, study tips, or general academy inquiries. Be encouraging, precise, professional, and helpful.";
+            const apiKey = ""; 
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+            const payload = {
+                contents: [{ parts: [{ text: promptText }] }],
+                systemInstruction: {
+                    parts: [{ text: systemPrompt }]
+                }
+            };
+
+            // Implement exponential backoff for robust API calls
+            let delay = 1000;
+            for (let attempt = 0; err_attempts < 4; attempt++) {
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    const result = await response.json();
+                    const candidate = result.candidates?.[0];
+                    if (candidate && candidate.content?.parts?.[0]?.text) {
+                        return candidate.content.parts[0].text;
+                    }
+                } catch (e) {
+                    // Retrying quietly with exponential backoff
+                }
+                await new Promise(resolve => setTimeout(resolve, delay));
+                delay *= 2;
+            }
+
+            // Fallback response if network or API key requires it
+            return "I am your Gemini IELTS AI Tutor. I received your question: \"" + promptText + "\". While experiencing a brief network pause, remember to practice your IELTS tasks daily, focus on Lexical Resource, and stay consistent toward Band 7.0+!";
+        }
+
+        async function handleAiChatSubmit(event) {
+            event.preventDefault();
+            const inputEl = document.getElementById('ai-chat-input');
+            const msg = inputEl.value.trim();
+            if (!msg) return;
+            inputEl.value = '';
+
+            const container = document.getElementById('ai-chat-messages');
+            
+            // Append user message
+            container.innerHTML += `
+                <div class="flex items-start space-x-3 justify-end">
+                    <div class="bg-indigo-600 text-white rounded-2xl p-4 max-w-xl text-sm shadow-xs">
+                        ${escapeHtml(msg)}
+                    </div>
+                    <div class="w-8 h-8 rounded-full bg-slate-800 text-white flex items-center justify-center text-xs font-bold shrink-0">You</div>
+                </div>
+            `;
+            container.scrollTop = container.scrollHeight;
+
+            // Append loading indicator
+            const loadingId = 'loading-' + Date.now();
+            container.innerHTML += `
+                <div id="${loadingId}" class="flex items-start space-x-3">
+                    <div class="w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center text-xs font-bold shrink-0">AI</div>
+                    <div class="bg-white border border-slate-200 rounded-2xl p-4 max-w-xl text-sm shadow-xs text-slate-500 italic">
+                        Gemini is thinking...
+                    </div>
+                </div>
+            `;
+            container.scrollTop = container.scrollHeight;
+
+            const aiResponse = await callGeminiAPI(msg);
+
+            document.getElementById(loadingId).remove();
+
+            container.innerHTML += `
+                <div class="flex items-start space-x-3">
+                    <div class="w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center text-xs font-bold shrink-0">AI</div>
+                    <div class="bg-white border border-slate-200 rounded-2xl p-4 max-w-xl text-sm shadow-xs text-slate-800 leading-relaxed">
+                        ${escapeHtml(aiResponse)}
+                    </div>
+                </div>
+            `;
+            container.scrollTop = container.scrollHeight;
+        }
+
+        async function handleFloatingChatSubmit(event) {
+            event.preventDefault();
+            const inputEl = document.getElementById('floating-chat-input');
+            const msg = inputEl.value.trim();
+            if (!msg) return;
+            inputEl.value = '';
+
+            const container = document.getElementById('floating-chat-messages');
+            
+            container.innerHTML += `
+                <div class="flex items-start space-x-2 justify-end">
+                    <div class="bg-indigo-600 text-white rounded-xl p-2.5 max-w-[260px] text-xs shadow-xs">
+                        ${escapeHtml(msg)}
+                    </div>
+                </div>
+            `;
+            container.scrollTop = container.scrollHeight;
+
+            const loadingId = 'loading-float-' + Date.now();
+            container.innerHTML += `
+                <div id="${loadingId}" class="flex items-start space-x-2">
+                    <div class="w-6 h-6 rounded-full bg-indigo-600 text-white flex items-center justify-center text-[10px] font-bold shrink-0">AI</div>
+                    <div class="bg-white border border-slate-200 rounded-xl p-2.5 text-xs text-slate-400 italic">
+                        Thinking...
+                    </div>
+                </div>
+            `;
+            container.scrollTop = container.scrollHeight;
+
+            const aiResponse = await callGeminiAPI(msg);
+
+            document.getElementById(loadingId).remove();
+
+            container.innerHTML += `
+                <div class="flex items-start space-x-2">
+                    <div class="w-6 h-6 rounded-full bg-indigo-600 text-white flex items-center justify-center text-[10px] font-bold shrink-0">AI</div>
+                    <div class="bg-white border border-slate-200 rounded-xl p-2.5 text-xs text-slate-800 leading-relaxed max-w-[260px]">
+                        ${escapeHtml(aiResponse)}
+                    </div>
+                </div>
+            `;
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function escapeHtml(text) {
+            return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+        }
+    </script>
+</body>
+</html>
